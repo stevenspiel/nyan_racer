@@ -1,0 +1,31 @@
+
+
+.racer_table td {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+}
+
+.racer_table td.active {
+  background: url('../nyancat.gif');
+  background-size: 100%;
+}
+
+.racer_table td.trail {
+  background: url('../nyancatbackground.gif');
+  background-size: 100%;
+}
+
+table {
+  border: 1px solid gray;
+  background-color: pink;
+}
+
+#countdown {
+  position: fixed;
+  z-index: 999;
+  color: red;
+  width: 100%;
+  text-align: center;
+  top: 20%;
+}
