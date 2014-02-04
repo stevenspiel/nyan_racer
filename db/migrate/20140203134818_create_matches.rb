@@ -1,9 +1,7 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
-      t.integer :game
-      t.integer :user
-      t.string :winner
+      t.boolean :winner
       t.string :winning_time
       t.integer :player_id
       t.integer :game_id

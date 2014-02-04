@@ -4,21 +4,13 @@ class Game < ActiveRecord::Base
 
   def self.send_results(player_one, player_two, lap_time, winner)
     game = Game.create
-    puts winner
-    player1 = Player.find_by_initials(player_one)
-    player2 = Player.find_by_initials(player_two)
-
-    player1 = Player.create(initials: player_one) if !player1
-    player2 = Player.create(initials: player_two) if !player2
-
-    player1.matches.create(game_id: game.id,
-                           winner: winner,
-                           winning_time: lap_time
-                          )
-    player2.matches.create(game_id: game.id,
-                           winner: winner,
-                           winning_time: lap_time
-                          )
-    game.id.to_s
+    players = [player_one, player_two]
+    players.each do |player|
+      this_player = Player.find_by_initials(player)
+      this_player = Player.create(initials: player) if !this_player
+      winner == player ? winner = true : winner = false
+      this_player.matches.create(game_id: game.id, winner: winner, winning_time: lap_time)
+    end
+    game.id.to_s #need this as return value
   end
 end

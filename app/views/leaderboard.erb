@@ -1,0 +1,16 @@
+<div class="container">
+  <table id="leaderboard">
+    <tr>
+      <th>Name</th>
+      <th>Time</th>
+    </tr>
+    <% @leaders.each do |leader| %>
+      <% player = Player.find(leader.player_id) %>
+      <tr>
+        <td><%= player.initials %></td>
+        <td><%= leader.winning_time %></td>
+      <tr/>
+    <% end %>
+  </table>
+  <a href="/">Play Again!</a>
+</div>

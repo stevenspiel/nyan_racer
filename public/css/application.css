@@ -1,9 +1,14 @@
+body {
+  text-align: center;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
@@ -11,7 +16,6 @@ th {
 .footer {
   margin: 20px auto;
   width: 600px;
-  text-align: center;
 }
 
 .footer a {
@@ -20,4 +24,56 @@ th {
 }
 .footer a:hover {
   color: orange;
+}
+
+#results, #results td{
+  background: #fff;
+  margin: auto;
+  border: 1px solid grey;
+}
+
+.racer_table td {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+}
+
+.racer_table td.active {
+  background: url('../nyancat.gif');
+  background-size: 100%;
+}
+
+.racer_table td.trail {
+  background: url('../nyancatbackground.gif');
+  background-size: 100%;
+}
+
+.racer_table {
+  background-color: pink;
+}
+
+table {
+  border: 1px solid gray;
+}
+
+#countdown {
+  position: fixed;
+  z-index: 999;
+  color: red;
+  width: 100%;
+  top: 20%;
+}
+
+#name-input {
+  display: block;
+}
+
+#leaderboard {
+  text-align: left;
+  margin: auto;
+  width: 50%;
+}
+
+#leaderboard td {
+  border-bottom: 1px solid gray;
 }
