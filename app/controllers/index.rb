@@ -3,29 +3,10 @@ get '/' do
 end
 
 post '/results' do
-  # playerOne: playerOne, playerTwo: playerTwo, lapTime: lapTime, winner: player
-  #create game
-  game = Game.create
-  # find user by initials
-  playerOne = Player.find_by_initials(params[:playerOne]);
-  playerTwo = Player.find_by_initials(params[:playerTwo]);
-  puts playerOne
-  winner = Player.find_by_initials(params[:winner])
-  playerOne.matches.create( game_id: game.id,
-                            winner: winner,
-                            winning_time: params[:lapTime]
-                            );
-  playerTwo.matches.create( game_id: game.id,
-                            winner: params[:winner],
-                            winning_time: params[:lapTime]
-                            );
+  Game.send_results(params[:playerOne], params[:playerTwo], params[:lapTime], params[:winner])
 end
 
-get '/results' do
-
-end
-
-post '/create_players' do
-  player1 = Player.create(initials: params[:player_one])
-  player2 = Player.create(initials: params[:player_two])
+get '/results/:game_id' do
+  @match = Match.where('game_id = ?', params[:game_id]).to_a
+  erb :results
 end

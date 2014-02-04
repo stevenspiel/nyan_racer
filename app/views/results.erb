@@ -1,0 +1,19 @@
+<div class="container">
+  <table id="results">
+    <tr>
+      <th>Player Initials</th>
+      <th>Winner</th>
+      <th>Winning Time</th>
+    </tr>
+    <% @match.each do |match| %>
+    <tr>
+      <td><%= player = Player.find(match.player_id).initials %></td>
+      <td><%= "X" if player == match.winner %></td>
+      <td><%= match.winning_time %></td>
+    </tr>
+    <% end %>
+  </table>
+  You can always come back to this page by using the link: <a href="<%= request.base_url %>/results/<%= @match.first.game_id %>"><%= request.base_url %>/results/<%= @match.first.game_id %></a>
+
+  <a href="/">Play Again!</a>
+</div>

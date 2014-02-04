@@ -1,4 +1,8 @@
-
+#results, #results td{
+  background: #fff;
+  margin: auto;
+  border: 1px solid grey;
+}
 
 .racer_table td {
   background-color: white;
