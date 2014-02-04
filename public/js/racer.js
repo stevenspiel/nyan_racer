@@ -11,7 +11,7 @@ $(document).ready(function() {
       console.log(e);
     },
     error: function(e){
-      console.log("NOOOOOOOO");
+      console.log("NOOOOOOOO....... unable to create player");
     }
 
   })
@@ -38,6 +38,8 @@ var advancePlayer = function(player) {
   active.removeClass("active");
   active.addClass("trail");
   active.next().addClass("active");
+
+  // Check which player won
   if ($("#player" + player + "_strip>td:last").hasClass("active")) {
     var endingTime = $.now()
     console.log(player);
@@ -47,6 +49,8 @@ var advancePlayer = function(player) {
       winner = playerTwo
     }
     lapTime = (endingTime - startingTime) / 1000
+
+    // Record the results in DB using AJAX post
     $.ajax({
       type: "POST",
       url: "/results",
@@ -67,6 +71,7 @@ var advancePlayer = function(player) {
 }
 
 function initializaPlay() {
+  // Countdown timer
   var timeOut = setTimeout(initializaPlay, 1000);
   $('#countdown').html(time);
   if(time === 0){
